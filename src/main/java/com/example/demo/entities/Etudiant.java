@@ -13,6 +13,7 @@ import javax.persistence.TemporalType;
 @Entity
 @DiscriminatorValue("etd")
 public class Etudiant extends Membre implements Serializable{
+	private static final long serialVersionUID = -7307524013681768892L;
 	@Temporal(TemporalType.DATE)
 	private Date dateInscription;
 	private String sujet;
@@ -49,12 +50,10 @@ public class Etudiant extends Membre implements Serializable{
 	}
 	public Etudiant() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Etudiant(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo,
 			String email, String password) {
 		super(cin, nom, prenom, dateNaissance, cv, photo, email, password);
-		// TODO Auto-generated constructor stub
 	}
 	public Etudiant(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo, String email,
 			String password, Date dateInscription, String sujet, String diplome) {

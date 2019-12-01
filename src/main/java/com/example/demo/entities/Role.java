@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Role implements Serializable {
+	private static final long serialVersionUID = 6648164166068023167L;
 	@Id
 	private String roleName;
 
@@ -20,7 +21,6 @@ public class Role implements Serializable {
 
 	public Role() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Role(String roleName) {

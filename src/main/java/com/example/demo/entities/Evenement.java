@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
 public class Evenement implements Serializable {
+	private static final long serialVersionUID = -4631665145949486743L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -57,7 +58,6 @@ public class Evenement implements Serializable {
 	}
 	public Evenement() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Evenement(String nom, Date dateEVT, String lieu) {
 		super();

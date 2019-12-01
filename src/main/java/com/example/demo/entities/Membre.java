@@ -14,7 +14,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,6 +21,7 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name= "type_mbr", discriminatorType = DiscriminatorType.STRING,length = 3)
 public  abstract class Membre implements Serializable {
+	private static final long serialVersionUID = 7727860198281645032L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -133,7 +133,6 @@ public  abstract class Membre implements Serializable {
 	}
 	public Membre() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Membre(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo, String email,
 			String password) {

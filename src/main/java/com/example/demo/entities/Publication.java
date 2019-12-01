@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
 public class Publication implements Serializable {
+	private static final long serialVersionUID = -3091043795504285364L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -69,7 +70,6 @@ public class Publication implements Serializable {
 	}
 	public Publication() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 

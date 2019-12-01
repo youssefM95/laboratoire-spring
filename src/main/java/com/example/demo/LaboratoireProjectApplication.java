@@ -1,24 +1,15 @@
 package com.example.demo;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
+import com.example.demo.dao.EnseignantChercheurRepository;
+import com.example.demo.dao.EtudiantRepository;
+import com.example.demo.dao.PublicationRepository;
+import com.example.demo.dao.RoleRepository;
+import com.example.demo.services.IMemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import com.example.demo.dao.EnseignantChercheurRepository;
-import com.example.demo.dao.EtudiantRepository;
-import com.example.demo.dao.PublicationRepository;
-import com.example.demo.dao.RoleRepository;
-import com.example.demo.entities.EnseignantChercheur;
-import com.example.demo.entities.Etudiant;
-import com.example.demo.entities.Membre;
-import com.example.demo.entities.Publication;
-import com.example.demo.entities.Role;
-import com.example.demo.services.IMemberService;
 
 @SpringBootApplication
 
