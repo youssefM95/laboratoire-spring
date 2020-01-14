@@ -11,11 +11,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.dao.EnseignantChercheurRepository;
 import com.example.demo.dao.EtudiantRepository;
+import com.example.demo.dao.EvenementRepository;
+import com.example.demo.dao.OutilRepository;
 import com.example.demo.dao.PublicationRepository;
 import com.example.demo.dao.RoleRepository;
+import com.example.demo.entities.ERole;
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
+import com.example.demo.entities.Evenement;
 import com.example.demo.entities.Membre;
+import com.example.demo.entities.Outil;
 import com.example.demo.entities.Publication;
 import com.example.demo.entities.Role;
 import com.example.demo.services.IMemberService;
@@ -37,18 +42,24 @@ public class LaboratoireProjectApplication implements CommandLineRunner {
 	
 	@Autowired
 	PublicationRepository publicationRepository;
+	
+	@Autowired
+	OutilRepository outilRepository;
+	
+	@Autowired
+	EvenementRepository evenementRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LaboratoireProjectApplication.class, args);
 	}
 		public void run(String... args) throws Exception {
 			// Update a Member
-			/*Role r1= new Role("admin");
-			Role r2= new Role ("user");
+			/*Role r1= new Role(ERole.ROLE_ADMIN);
+			Role r2= new Role (ERole.ROLE_PROFESSOR);
 			roleRepository.save(r1);
-			roleRepository.save(r2);
+			roleRepository.save(r2);*/
 			
-			Collection<Role> lst1= new ArrayList<Role>();
+			/*Collection<Role> lst1= new ArrayList<Role>();
 			lst1.add(r1);
 			
 			Collection<Role> lst2= new ArrayList<Role>();
@@ -73,9 +84,20 @@ public class LaboratoireProjectApplication implements CommandLineRunner {
 			etd2.setRoles(lst2);
 			etd3.setRoles(lst2);
 			
-			etudiantRepository.save(etd1);
+			Collection<Membre> developpeurs= new ArrayList<Membre>();
+			developpeurs.add(etd2);
+			developpeurs.add(etd3);
+			Outil outil = new Outil("outil","source",new Date());
+			//outil.getDeveloppeurs().add(etd2);
+			outil.setDeveloppeurs(developpeurs);
+			/*Collection<Outil> outils = new ArrayList<Outil>();
+			outils.add(outil);
+			etd2.setOutils(outils);*/
+			
+			/*etudiantRepository.save(etd1);
 			etudiantRepository.save(etd2);
 			etudiantRepository.save(etd3);
+			outilRepository.save(outil);
 			
 			Publication pubs= new Publication("poster", new Date(), "lien", "pdf");
 			Collection<Membre> auteurs= new ArrayList<Membre>();
@@ -84,13 +106,24 @@ public class LaboratoireProjectApplication implements CommandLineRunner {
 			auteurs.add(ens2);
 			pubs.setAuteurs(auteurs);
 			
-			publicationRepository.save(pubs);*/
+			publicationRepository.save(pubs);
 			
 			/*Membre m= memberService.findMember(2L);
 			m.setCv("cv1.pdf");
 			memberService.updateMember(m);*/
 			// Delete a Member
 			//memberService.deleteMember(20L);
+			
+			
+			
+			
+			/*Evenement e = new Evenement("event1", new Date(), "sfax");
+			e.setOrganisateurs(developpeurs);
+			evenementRepository.save(e);*/
+			
+			
+			
+			
 			
 		}
 		

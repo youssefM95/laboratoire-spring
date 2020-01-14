@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -22,7 +23,7 @@ public class Outil implements Serializable {
 	private Date date;
 	
 	@ManyToMany
-	private Collection<Membre> developpeurs;
+	private Collection<Membre> developpeurs = new ArrayList<Membre>();
 	
 	public Collection<Membre> getDeveloppeurs() {
 		return developpeurs;

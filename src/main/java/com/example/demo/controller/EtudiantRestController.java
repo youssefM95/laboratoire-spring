@@ -11,11 +11,12 @@ import com.example.demo.entities.Etudiant;
 import com.example.demo.services.ImplEtudiant;
 
 @RestController
+@RequestMapping("/api/student")
 public class EtudiantRestController {
 	@Autowired
 	ImplEtudiant implEtudiant;
 
-	@RequestMapping(value = "/Etudiants", method = RequestMethod.GET)
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public List<Etudiant> findEtudiants() {
 		return implEtudiant.findAll();
 	}

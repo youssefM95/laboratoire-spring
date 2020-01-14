@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import com.example.demo.entities.Membre;
 import com.example.demo.services.IMemberService;
 
 @RestController
+@RequestMapping("/api/membre")
 public class MemberRestController {
 	@Autowired
 	IMemberService memberService;
@@ -30,7 +32,7 @@ public class MemberRestController {
 
 	}
 
-	@GetMapping(value = "/membre/{id}")
+	@GetMapping(value = "/{id}")
 	public Membre findOneMemberById(@PathVariable Long id) {
 		return memberService.findMember(id);
 	}
@@ -40,8 +42,8 @@ public class MemberRestController {
 		return memberService.findByCin(cin);
 	}
 
-	@GetMapping(value = "/membre/search/email")
-	public Membre findOneMemberByEmail(@RequestParam String email) {
+	@GetMapping(value = "/search/email")
+	public Optional<Membre> findOneMemberByEmail(@RequestParam String email) {
 		return memberService.findByEmail(email);
 	}
 

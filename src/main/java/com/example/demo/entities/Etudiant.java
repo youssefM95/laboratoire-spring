@@ -56,6 +56,11 @@ public class Etudiant extends Membre implements Serializable{
 		super(cin, nom, prenom, dateNaissance, cv, photo, email, password);
 		// TODO Auto-generated constructor stub
 	}
+	public Etudiant(String cin, String nom, String prenom, Date dateNaissance,
+			String email,byte[] photo, String password) {
+		super(cin, nom, prenom, dateNaissance, email,photo, password);
+		
+	}
 	public Etudiant(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo, String email,
 			String password, Date dateInscription, String sujet, String diplome) {
 		super(cin, nom, prenom, dateNaissance, cv, photo, email, password);

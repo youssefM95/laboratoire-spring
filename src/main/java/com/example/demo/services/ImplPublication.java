@@ -2,12 +2,12 @@ package com.example.demo.services;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.PublicationRepository;
+import com.example.demo.entities.Membre;
 import com.example.demo.entities.Publication;
 
 @Service
@@ -33,11 +33,11 @@ public PublicationRepository publication;
 		return publication.findByLien(lien);
 	}
 
-	@Override
-	public List<Publication> findBySourcePdf(String sourcePdf) {
-		
-		return publication.findBySourcePdf(sourcePdf);
-	}
+//	@Override
+//	public List<Publication> findBySourcePdf(String sourcePdf) {
+//		
+//		return publication.findBySourcePdf(sourcePdf);
+//	}
 
 	@Override
 	public List<Publication> findByDateApparition(Date date) {
@@ -52,12 +52,14 @@ public PublicationRepository publication;
 	}
 
 	@Override
-	public Publication addPub(Publication P) {
+	public void addPub(Publication P) {
 		
 		publication.save(P);
-		return P;
 	}
-
 	
+	@Override
+	public List<Publication> findByAuteur(Membre auteur) {
+		return publication.findByAuteur(auteur);
+	}
 
 }

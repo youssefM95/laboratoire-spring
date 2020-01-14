@@ -12,10 +12,11 @@ import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.services.ImplEnseignantChercheur;
 
 @RestController
+@RequestMapping("/api/professor")
 public class EnseignantChercheurRestController {
 @Autowired
 ImplEnseignantChercheur enseignant;
-	@RequestMapping(value = "/Enseignants",method = RequestMethod.GET)
+	@RequestMapping(value = "/all",method = RequestMethod.GET)
 	public List<EnseignantChercheur> findAll()
 	{
 		return enseignant.findAll();

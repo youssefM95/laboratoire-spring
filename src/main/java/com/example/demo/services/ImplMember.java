@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,7 +60,7 @@ public Membre findByCin(String cin) {
 }
 
 @Override
-public Membre findByEmail(String email) {
+public Optional<Membre> findByEmail(String email) {
 	return memberRepository.findByEmail(email);
 }
 
@@ -81,6 +82,11 @@ public List<EnseignantChercheur> findByGrade(String grade) {
 @Override
 public List<EnseignantChercheur> findByEtablissement(String etablissement) {
 	return enseignantChercheurRepository.findByEtablissement(etablissement);
+}
+
+@Override
+public Membre findById(Long idAuteur) {
+	return memberRepository.findById(idAuteur).get();
 }
 	
 }

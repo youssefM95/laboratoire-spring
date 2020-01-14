@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
@@ -21,9 +21,9 @@ public class Publication implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dateApparition;
 	private String lien;
-	private String sourcePdf;
-	@ManyToMany(cascade = CascadeType.ALL)
-	private Collection<Membre> auteurs;
+//	private String sourcePdf;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Membre auteur;
 	public Long getId() {
 		return id;
 	}
@@ -48,24 +48,25 @@ public class Publication implements Serializable {
 	public void setLien(String lien) {
 		this.lien = lien;
 	}
-	public String getSourcePdf() {
-		return sourcePdf;
+//	public String getSourcePdf() {
+//		return sourcePdf;
+//	}
+//	public void setSourcePdf(String sourcePdf) {
+//		this.sourcePdf = sourcePdf;
+//	}
+	public Membre getAuteur() {
+		return auteur;
 	}
-	public void setSourcePdf(String sourcePdf) {
-		this.sourcePdf = sourcePdf;
+	public void setAuteur(Membre auteur) {
+		this.auteur = auteur;
 	}
-	public Collection<Membre> getAuteurs() {
-		return auteurs;
-	}
-	public void setAuteurs(Collection<Membre> auteurs) {
-		this.auteurs = auteurs;
-	}
+	
 	public Publication(String type, Date dateApparition, String lien, String sourcePdf) {
 		super();
 		this.type = type;
 		this.dateApparition = dateApparition;
 		this.lien = lien;
-		this.sourcePdf = sourcePdf;
+//		this.sourcePdf = sourcePdf;
 	}
 	public Publication() {
 		super();
