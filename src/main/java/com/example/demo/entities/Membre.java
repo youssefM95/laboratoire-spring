@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -14,14 +15,17 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name= "type_mbr", discriminatorType = DiscriminatorType.STRING,length = 3)
 public  abstract class Membre implements Serializable {
-	private static final long serialVersionUID = 7727860198281645032L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,17 +41,17 @@ public  abstract class Membre implements Serializable {
 	private String password;
 	
 	//Relations
-	@ManyToMany
-	private Collection<Role>roles;
+	@ManyToOne
+	private Role role;
 	
-	@ManyToMany(mappedBy = "auteurs")
-	private Collection<Publication>pubs;
+	@OneToMany(mappedBy="auteur",cascade = CascadeType.ALL)
+	private Collection<Publication> publications;
 	
 	@ManyToMany(mappedBy = "organisateurs")
 	private Collection<Evenement>evts;
 	
 	@ManyToMany(mappedBy = "developpeurs")
-	private Collection<Outil> outils;
+	private Collection<Outil> outils ;
 	
 	
 	
@@ -63,17 +67,19 @@ public  abstract class Membre implements Serializable {
 	public void setOutils(Collection<Outil> outils) {
 		this.outils = outils;
 	}
-	public Collection<Publication> getPubs() {
-		return pubs;
+
+	@JsonIgnore
+	public Collection<Publication> getPublications() {
+		return publications;
 	}
-	public void setPubs(Collection<Publication> pubs) {
-		this.pubs = pubs;
+	public void setPublications(Collection<Publication> publications) {
+		this.publications = publications;
 	}
-	public Collection<Role> getRoles() {
-		return roles;
+	public Role getRole() {
+		return role;
 	}
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	public Long getId() {
 		return id;
@@ -133,6 +139,7 @@ public  abstract class Membre implements Serializable {
 	}
 	public Membre() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public Membre(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo, String email,
 			String password) {
@@ -146,6 +153,17 @@ public  abstract class Membre implements Serializable {
 		this.email = email;
 		this.password = password;
 	}
+	public Membre(String cin, String nom, String prenom, Date dateNaissance, String email,byte[] photo, String password) {
+		super();
+		this.cin = cin;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.email = email;
+		this.photo=photo;
+		this.password = password;
+	}
+	
 	
 	
 	

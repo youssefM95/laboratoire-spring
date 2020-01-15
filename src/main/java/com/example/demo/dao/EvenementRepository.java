@@ -11,7 +11,9 @@ import com.example.demo.entities.Membre;
 public interface EvenementRepository extends JpaRepository<Evenement, Long>{
 
 	List <Evenement> findByNom(String nom);
-	List<Membre> findByNomStartingWith(String caractere);
-	List<Membre> findByDateEVT(Date date);
-	List<Membre> findByLieu(String lieu);
+	List<Evenement> findByNomStartingWith(String caractere);
+	List<Evenement> findByDateEVT(Date date);
+	List<Evenement> findByLieu(String lieu);
+	
+	void deleteById(Long id);
 }

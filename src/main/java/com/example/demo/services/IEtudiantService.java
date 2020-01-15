@@ -27,6 +27,6 @@ public interface IEtudiantService {
 		public List<Etudiant> findByDiplome(String diplome);
 		
 		//recherche spécifique des enseignants
-		public EnseignantChercheur findByEncadrant(Long id);
+		public List<Etudiant> findByEncadrant(EnseignantChercheur enseignantChercheur);
 		
 }

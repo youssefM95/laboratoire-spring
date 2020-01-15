@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
@@ -18,7 +19,7 @@ public interface IMemberService {
 	
 	//Filtrage par propriété
 	public Membre findByCin(String cin);
-	public Membre findByEmail(String email);
+	public Optional<Membre> findByEmail(String email);
 	public List<Membre> findByNom(String nom);
 	//recherche spécifique des étudiants
 	public List<Etudiant> findByDiplome(String diplome);
@@ -27,5 +28,6 @@ public interface IMemberService {
 	public List<EnseignantChercheur> findByEtablissement(String
 	etablissement);
 	//other ...
+	public Membre findById(Long idAuteur);
 	
 }

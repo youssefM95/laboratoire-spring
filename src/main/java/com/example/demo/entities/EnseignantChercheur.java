@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("ens")
 public class EnseignantChercheur extends Membre implements Serializable{
-	private static final long serialVersionUID = 2908557486470384440L;
 	private String etablissement;
 	private String grade;
 	public String getEtablissement() {
@@ -26,10 +25,18 @@ public class EnseignantChercheur extends Membre implements Serializable{
 	}
 	public EnseignantChercheur() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public EnseignantChercheur(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo,
 			String email, String password) {
 		super(cin, nom, prenom, dateNaissance, cv, photo, email, password);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public EnseignantChercheur(String cin, String nom, String prenom, Date dateNaissance,
+			String email,byte[] photo, String password) {
+		super(cin, nom, prenom, dateNaissance, email,photo, password);
+		
 	}
 	
 

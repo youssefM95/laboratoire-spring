@@ -10,17 +10,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @DiscriminatorValue("etd")
 public class Etudiant extends Membre implements Serializable{
-	private static final long serialVersionUID = -7307524013681768892L;
 	@Temporal(TemporalType.DATE)
 	private Date dateInscription;
 	private String sujet;
 	private String diplome;
 	
 	//relation : a un encadrant par d�faut est eager
-	@ManyToOne (fetch=FetchType.LAZY)
+	@JsonIgnore
+	@ManyToOne 
 	private EnseignantChercheur encadrant;
 	
 	public EnseignantChercheur getEncadrant() {
@@ -50,10 +52,17 @@ public class Etudiant extends Membre implements Serializable{
 	}
 	public Etudiant() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public Etudiant(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo,
 			String email, String password) {
 		super(cin, nom, prenom, dateNaissance, cv, photo, email, password);
+		// TODO Auto-generated constructor stub
+	}
+	public Etudiant(String cin, String nom, String prenom, Date dateNaissance,
+			String email,byte[] photo, String password) {
+		super(cin, nom, prenom, dateNaissance, email,photo, password);
+		
 	}
 	public Etudiant(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo, String email,
 			String password, Date dateInscription, String sujet, String diplome) {

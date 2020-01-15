@@ -79,9 +79,9 @@ public class ImplEtudiant implements IEtudiantService{
 	}
 
 	@Override
-	public EnseignantChercheur findByEncadrant(Long id) {
+	public List<Etudiant> findByEncadrant(EnseignantChercheur encadrant) {
 		
-		return enseignantChercheur.findById(id).get();
+		return etudiantRepository.findByEncadrant(encadrant);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -13,7 +14,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
 public class Outil implements Serializable {
-	private static final long serialVersionUID = 5721494034311057479L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -23,7 +23,7 @@ public class Outil implements Serializable {
 	private Date date;
 	
 	@ManyToMany
-	private Collection<Membre> developpeurs;
+	private Collection<Membre> developpeurs = new ArrayList<Membre>();
 	
 	public Collection<Membre> getDeveloppeurs() {
 		return developpeurs;
@@ -63,6 +63,7 @@ public class Outil implements Serializable {
 	}
 	public Outil() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	
